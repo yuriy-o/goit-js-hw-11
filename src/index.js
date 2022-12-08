@@ -45,5 +45,6 @@
 //   .then(() => console.log('Post deleted'))
 //   .catch(error => console.log('Error:', error));
 
-
-<button type="button" class="load-more">Load more</button>
+{
+  /* <button type="button" class="load-more">Load more</button> */
+}

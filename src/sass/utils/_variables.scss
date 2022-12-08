@@ -1,0 +1,20 @@
+:root {
+  --main-font: Roboto, sans-serif;
+
+  --main-text-color: #212121;
+  --secondary-text-color: #ffffff;
+  --accent-color: #ff8c00;
+
+  --main-background-color: #ffffff;
+  --dark-background-color: #2f303a;
+
+  --form-bgr-color: #5b3c67;
+
+  --btn-bgr-color: #7f113e;
+  --btn-hover-color: #c41f63;
+  --btn-border-color: #f5c4ab;
+
+  /* animation */
+  --transition-duration: 350ms;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
