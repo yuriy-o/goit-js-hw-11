@@ -58,6 +58,7 @@ function onFormSubmit(e) {
 
   // lazyLoading();
   gallery.refresh();
+  e.target.reset();
 }
 
 function createGallery(galleryItems) {
