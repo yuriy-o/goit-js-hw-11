@@ -1,9 +1,8 @@
 'use strict';
 
 export function lazyLoading() {
-  //! Start for lazy loading
-  //?const lazyImages = document.querySelectorAll('img[data-src]');
-  const lazyImages = Array.from(document.querySelectorAll('img[data-src]'));
+  const lazyImages = document.querySelectorAll('img[data-src]');
+  //?const lazyImages = Array.from(document.querySelectorAll('img[data-src]'));
   const windowHeight = document.documentElement.clientHeight; //Висота екрана без скрола
 
   let lazyImagesPositions = [];
@@ -13,7 +12,7 @@ export function lazyLoading() {
   } else if (lazyImages.length > 0) {
     lazyImages.forEach(img => {
       if (img.dataset.src) {
-        lazyImagesPositions.push(img.getBoundingClientRect().top + pageYOffset);
+        lazyImagesPositions.push(img.getBoundingClientRect().top + scrollY);
       }
     });
     lazyScrollCheck();
@@ -44,7 +43,7 @@ export function lazyLoading() {
   function lazyScrollCheck() {
     let imagesIndexes = [];
     lazyImagesPositions.forEach((imagePosition, index) => {
-      if (pageYOffset > imagePosition - windowHeight) {
+      if (scrollY > imagePosition - windowHeight) {
         imagesIndexes.push(index);
       }
     });
@@ -58,6 +57,4 @@ export function lazyLoading() {
       });
     }
   }
-
-  //! End for lazy loading
 }
