@@ -1,6 +1,7 @@
-import { fetchImages } from './js/fetchImages';
-import { createGallery } from './js/createGallery';
+// import { fetchImages } from './js/fetchImages';
 // import { lazyLoading } from './js/lazy';
+import { createGallery } from './js/createGallery';
+import NewsApiService from './js/fetchImages';
 
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
@@ -12,6 +13,8 @@ const refs = {
   galleryWrapper: document.querySelector('.gallery'),
   btnLoadMore: document.querySelector('.load-more'),
 };
+
+const newsApiService = new NewsApiService();
 
 let formValue = '';
 
@@ -30,7 +33,8 @@ function onFormSubmit(e) {
 
   // console.log('Значення, введене в Input', formValue);
 
-  fetchImages(formValue)
+  newsApiService
+    .fetchImages(formValue)
     .then(data => {
       if (formValue === '') {
         return;
