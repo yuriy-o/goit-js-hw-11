@@ -1,7 +1,3 @@
-{
-  /* <button type="button" class="load-more">Load more</button> */
-}
-
 import { fetchImages } from './js/fetchImages';
 import { createGallery } from './js/createGallery';
 // import { lazyLoading } from './js/lazy';
@@ -13,12 +9,14 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const refs = {
   form: document.querySelector('#search-form'),
   galleryWrapper: document.querySelector('.gallery'),
+  btnLoadMore: document.querySelector('.load-more'),
 };
 
 let formValue = '';
 
 refs.form.addEventListener('input', onFormData);
 refs.form.addEventListener('submit', onFormSubmit);
+refs.btnLoadMore.addEventListener('click', onLoadMore);
 
 function onFormData(e) {
   formValue = e.target.value.trim();
@@ -64,6 +62,10 @@ function onFormSubmit(e) {
 
   // lazyLoading();
   e.target.reset();
+}
+
+function onLoadMore() {
+  //
 }
 
 function clear() {

@@ -7,37 +7,27 @@
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
-    <form class="search-form" id="search-form">
-      <input
-        class="input"
-        type="text"
-        name="searchQuery"
-        autocomplete="on"
-        placeholder="Search images..."
-      />
-      <button class="button" type="submit">Search</button>
-    </form>
-    <div class="gallery">
-      <!-- <div class="photo-card">
-        <div class="image">
-          <a class="gallery__item" href="${largeImageURL}">
-            <img
-              class="gallery__image"
-              src="${webformatURL}"
-              alt="${tags}"
-              loading="lazy"
-            />
-          </a>
-        </div>
-        <div class="info">
-          <p class="info-item"><b>Likes</b> ${likes}</p>
-          <p class="info-item"><b>Views</b> ${views}</p>
-          <p class="info-item"><b>Comments</b> ${comments}</p>
-          <p class="info-item"><b>Downloads</b> ${downloads}</p>
-        </div>
-      </div> -->
-    </div>
+    <div class="wrapper">
+      <!-- <header class="header"></header> -->
+      <main class="main">
+        <form class="search-form" id="search-form">
+          <input
+            class="input"
+            type="text"
+            name="searchQuery"
+            autocomplete="on"
+            placeholder="Search images..."
+          />
+          <button class="button" type="submit">Search</button>
+        </form>
 
+        <div class="gallery"></div>
+
+        <button type="button" class="load-more">Load more</button>
+      </main>
+
+      <!-- <footer class="footer"></footer> -->
+    </div>
     <script src="index.js" type="module"></script>
   </body>
 </html>
