@@ -5,6 +5,7 @@ import { createGallery } from './js/createGallery';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import axios from 'axios';
 
 const refs = {
   form: document.querySelector('#search-form'),
@@ -31,11 +32,17 @@ function onFormSubmit(e) {
 
   fetchImages(formValue)
     .then(data => {
+      if (formValue === '') {
+        return;
+      }
+
       Notify.info(`Hooray! We found ${data.totalHits} images.`);
 
       return data.hits;
     })
     .then(images => {
+      console.log('images', images);
+
       if (formValue === '' || images.length === 0) {
         clear();
         Notify.failure(
@@ -74,7 +81,7 @@ function clear() {
 
 //! Виклик та налаштування галереї
 const gallery = new SimpleLightbox('.gallery a', {
-  // captionsData: 'alt', //? Мета тег Alt краще не відображати на фото
+  // captionsData: 'alt', //? Цей мета тег Alt краще не відображати на фото
   captionDelay: 250,
   overlayOpacity: 0.8,
   closeText: '☣',

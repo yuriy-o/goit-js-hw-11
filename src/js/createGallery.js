@@ -15,8 +15,7 @@ export function createGallery(galleryItems) {
           .replace('https://pixabay.com/photos/', '')
           .slice(0, pageURL.length - 35)
           .replaceAll('-', ' ')
-          .trim();
-        //! Треба ще видалити дублікати слів, та перше слово зробити з великої літери
+          .trim(); //! Треба ще видалити дублікати слів, та перше слово зробити з великої літери
 
         return `
     <div class="photo-card">
