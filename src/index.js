@@ -50,6 +50,8 @@ function onFormSubmit(e) {
       // console.log(galleryMarkup);
 
       refs.galleryWrapper.insertAdjacentHTML('beforeend', galleryMarkup);
+
+      gallery.refresh();
     })
     .catch(error => {
       Notify.failure(
@@ -59,7 +61,6 @@ function onFormSubmit(e) {
     });
 
   // lazyLoading();
-  gallery.refresh();
   e.target.reset();
 }
 
@@ -70,8 +71,13 @@ function clear() {
 //! Виклик та налаштування галереї
 const gallery = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
+  captionPosition: 'bottom',
   captionDelay: 250,
-  overlayOpacity: 0.8,
-  closeText: '☣',
-  scrollZoom: false,
 });
+// const gallery = new SimpleLightbox('.gallery a', {
+//   captionsData: 'alt',
+//   captionDelay: 250,
+//   overlayOpacity: 0.8,
+//   closeText: '☣',
+//   scrollZoom: false,
+// });
