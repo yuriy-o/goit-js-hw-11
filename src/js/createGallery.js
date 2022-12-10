@@ -9,7 +9,15 @@ export function createGallery(galleryItems) {
         views,
         comments,
         downloads,
+        pageURL,
       }) => {
+        const title = pageURL
+          .replace('https://pixabay.com/photos/', '')
+          .slice(0, pageURL.length - 35)
+          .replaceAll('-', ' ')
+          .trim();
+        //! Треба ще видалити дублікати слів, та перше слово зробити з великої літери
+
         return `
     <div class="photo-card">
       <div class="wrap">
@@ -18,6 +26,7 @@ export function createGallery(galleryItems) {
             class="gallery__image"
             src="${webformatURL}"
             alt="${tags}"
+            title="${title}"
             loading="lazy"
           />
         </a>
@@ -27,6 +36,7 @@ export function createGallery(galleryItems) {
         <p class="info-item"><b>Views</b> ${views}</p>
         <p class="info-item"><b>Comments</b> ${comments}</p>
         <p class="info-item"><b>Downloads</b> ${downloads}</p>
+        
       </div>
     </div>
                `;
