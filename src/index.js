@@ -33,6 +33,8 @@ function onFormSubmit(e) {
 
   fetchImages(formValue)
     .then(data => {
+      Notify.info(`Hooray! We found ${data.totalHits} images.`);
+
       return data.hits;
     })
     .then(images => {
@@ -70,14 +72,9 @@ function clear() {
 
 //! Виклик та налаштування галереї
 const gallery = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionPosition: 'bottom',
+  // captionsData: 'alt', //? Мета тег Alt краще не відображати на фото
   captionDelay: 250,
+  overlayOpacity: 0.8,
+  closeText: '☣',
+  scrollZoom: false,
 });
-// const gallery = new SimpleLightbox('.gallery a', {
-//   captionsData: 'alt',
-//   captionDelay: 250,
-//   overlayOpacity: 0.8,
-//   closeText: '☣',
-//   scrollZoom: false,
-// });
