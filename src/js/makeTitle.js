@@ -4,11 +4,13 @@ export function makeTitle(pageURL) {
     .slice(0, pageURL.length - 35)
     .replaceAll('-', ' ')
     .trim()
-    .split('');
+    .split(' ');
 
-  const firstWordInUpperCase = string.shift().toUpperCase();
-  const withOutFirstWord = string.slice(0, string.length).join('');
-  const title = firstWordInUpperCase + withOutFirstWord;
+  const withoutDuplicates = [...new Set(string)].join(' ');
+  const array = withoutDuplicates.split('');
+  const firstLetterInUpperCase = array.shift().toUpperCase();
+  const withOutFirstLetter = array.slice(0, array.length).join('');
+  const title = firstLetterInUpperCase + withOutFirstLetter;
 
   return title;
 }

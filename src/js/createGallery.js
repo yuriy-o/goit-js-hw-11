@@ -12,6 +12,7 @@ export function createGallery(galleryItems) {
         pageURL,
       }) => {
         //! Наступний код із URL робить тайтл для картинки
+        //? Чому не виходь винести цей код в окрему функцію ??
         const string = pageURL
           .replace('https://pixabay.com/photos/', '')
           .slice(0, pageURL.length - 35)
@@ -21,9 +22,9 @@ export function createGallery(galleryItems) {
 
         const withoutDuplicates = [...new Set(string)].join(' ');
         const array = withoutDuplicates.split('');
-        const firstWordInUpperCase = array.shift().toUpperCase();
-        const withOutFirstWord = array.slice(0, array.length).join('');
-        const title = firstWordInUpperCase + withOutFirstWord;
+        const firstLetterInUpperCase = array.shift().toUpperCase();
+        const withOutFirstLetter = array.slice(0, array.length).join('');
+        const title = firstLetterInUpperCase + withOutFirstLetter;
         //! End title
 
         return `
