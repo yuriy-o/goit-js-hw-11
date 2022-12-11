@@ -4,7 +4,7 @@ export function createGallery(galleryItems) {
       ({
         webformatURL,
         largeImageURL,
-        tags,
+        tags: alt,
         likes,
         views,
         comments,
@@ -34,7 +34,7 @@ export function createGallery(galleryItems) {
           <img
             class="gallery__image"
             src="${webformatURL}"
-            alt="${tags}"
+            alt="${alt}"
             title="${title}"
             loading="lazy"
           />
@@ -45,7 +45,6 @@ export function createGallery(galleryItems) {
         <p class="info-item"><b>Views</b> ${views}</p>
         <p class="info-item"><b>Comments</b> ${comments}</p>
         <p class="info-item"><b>Downloads</b> ${downloads}</p>
-        
       </div>
     </div>
                `;
