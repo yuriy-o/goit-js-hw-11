@@ -8,7 +8,6 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import axios from 'axios';
 import bootstrap from 'bootstrap';
-const bootstrap = require('bootstrap');
 
 const refs = {
   form: document.querySelector('#search-form'),
@@ -22,6 +21,7 @@ const loadMoreBtn = new LoadMoreBtn({
   hidden: true,
 });
 const newsApiService = new NewsApiService();
+const bootstrap = require('bootstrap');
 
 refs.form.addEventListener('submit', onFormSubmit);
 loadMoreBtn.refs.button.addEventListener('click', onLoadMore);
