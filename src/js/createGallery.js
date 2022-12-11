@@ -11,11 +11,20 @@ export function createGallery(galleryItems) {
         downloads,
         pageURL,
       }) => {
-        const title = pageURL
+        //! Наступний код із URL робить тайтл для картинки
+        const string = pageURL
           .replace('https://pixabay.com/photos/', '')
           .slice(0, pageURL.length - 35)
           .replaceAll('-', ' ')
-          .trim(); //! Треба ще видалити дублікати слів, та перше слово зробити з великої літери
+          .trim()
+          .split(' ');
+
+        const withoutDuplicates = [...new Set(string)].join(' ');
+        const array = withoutDuplicates.split('');
+        const firstWordInUpperCase = array.shift().toUpperCase();
+        const withOutFirstWord = array.slice(0, array.length).join('');
+        const title = firstWordInUpperCase + withOutFirstWord;
+        //! End title
 
         return `
     <div class="photo-card">

@@ -19,10 +19,6 @@ export default class NewsApiService {
           throw new Error(response.status);
         }
 
-        console.log('response.statusText', response.statusText);
-        console.log('response', response);
-        console.log('response.data', response.data);
-
         this.incrementPage();
 
         return response.data;
