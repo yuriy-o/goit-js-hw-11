@@ -1,27 +1,48 @@
 import axios from 'axios';
 
+const BASE_URL = 'https://pixabay.com/api/';
+const API_KEY = '17067261-d096522309c4f7c33a0f4f98e';
+
 export default class NewsApiService {
-  constructor() {}
+  constructor() {
+    this.searchQuery = '';
+    this.page = 1;
+  }
 
-  fetchImages(searchQuery) {
-    const BASE_URL = 'https://pixabay.com/api/';
-    const API_KEY = '17067261-d096522309c4f7c33a0f4f98e';
-
+  fetchImages() {
     return axios
       .get(
-        `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=1&per_page=40`
+        `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
       )
       .then(response => {
-        // if (response.status !== 200) {
-        //   throw new Error(response.status);
-        // }
+        if (response.status !== 200) {
+          throw new Error(response.status);
+        }
 
-        console.log(response);
-        console.log(response.data);
-        console.log(response.data.hits);
+        console.log('response.statusText', response.statusText);
+        console.log('response', response);
+        console.log('response.data', response.data);
+
+        this.incrementPage();
 
         return response.data;
       });
+  }
+
+  incrementPage() {
+    this.page += 1;
+  }
+
+  resetPage() {
+    this.page = 1;
+  }
+
+  get query() {
+    return this.searchQuery;
+  }
+
+  set query(newQuery) {
+    this.searchQuery = newQuery;
   }
 }
 
@@ -35,14 +56,6 @@ export default class NewsApiService {
 //       `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=1&per_page=40`
 //     )
 //     .then(response => {
-//       // if (response.status !== 200) {
-//       //   throw new Error(response.status);
-//       // }
-
-//       console.log(response);
-//       console.log(response.data);
-//       console.log(response.data.hits);
-
 //       return response.data;
 //     });
 // }
@@ -58,7 +71,6 @@ export default class NewsApiService {
 //     if (!resp.ok) {
 //       throw new Error(resp.status);
 //     }
-
 //     return resp.json();
 //   });
 // }

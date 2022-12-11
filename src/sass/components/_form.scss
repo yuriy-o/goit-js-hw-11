@@ -38,8 +38,7 @@
   font-size: 14px;
 }
 
-.load-more,
-.button {
+.button-style {
   font-size: 14pt;
 
   color: var(--secondary-text-color);
@@ -62,10 +61,24 @@
 }
 
 .load-more {
-  display: flex;
   align-items: center;
 
+  height: auto;
+
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.button {
+  display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
+}
+
+.button.is-hidden {
+  display: none;
+}
+
+.button > .spinner.is-hidden {
+  display: none;
 }
