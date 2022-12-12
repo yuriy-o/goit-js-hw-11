@@ -1,3 +1,5 @@
+import { makeTitle } from './makeTitle';
+
 export function createGallery(galleryItems) {
   const markup = galleryItems
     .map(
@@ -11,22 +13,7 @@ export function createGallery(galleryItems) {
         downloads,
         pageURL,
       }) => {
-        //! Наступний код із URL робить тайтл для картинки
-        //? Як та Чому не виходь винести цей код в окрему функцію ??
-        const string = pageURL
-          .replace('https://pixabay.com/photos/', '')
-          .slice(0, pageURL.length - 35)
-          .replaceAll('-', ' ')
-          .trim()
-          .split(' ');
-
-        const withoutDuplicates = [...new Set(string)].join(' ');
-        // const array = withoutDuplicates.split(''); //! Два варіанта перевести строку в масив
-        const array = [...withoutDuplicates];
-        const firstLetterInUpperCase = array.shift().toUpperCase();
-        const withOutFirstLetter = array.slice(0, array.length).join('');
-        const title = firstLetterInUpperCase + withOutFirstLetter;
-        //! End title
+        const title = makeTitle(pageURL);
 
         return `
     <div class="photo-card">
