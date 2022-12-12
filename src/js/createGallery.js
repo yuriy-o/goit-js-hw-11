@@ -12,7 +12,7 @@ export function createGallery(galleryItems) {
         pageURL,
       }) => {
         //! Наступний код із URL робить тайтл для картинки
-        //? Чому не виходь винести цей код в окрему функцію ??
+        //? Як та Чому не виходь винести цей код в окрему функцію ??
         const string = pageURL
           .replace('https://pixabay.com/photos/', '')
           .slice(0, pageURL.length - 35)

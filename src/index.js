@@ -46,6 +46,9 @@ async function onFormSubmit(e) {
 
   const data = await newsApiService.fetchImages();
   try {
+    const array = data.hits; //! ?? await //??
+    const markup = onGalleryMarkup(array);
+
     //! Перевіряє на вірність запросу. Якщо по запросу нема даних, то видає помилку
     if (Number(data.totalHits) === 0) {
       Notify.failure(
@@ -55,20 +58,14 @@ async function onFormSubmit(e) {
       return;
     }
 
-    Notify.info(`Hooray! We found ${data.totalHits} images.`);
-
-    const array = data.hits; //! ?? await //??
-    const markup = onGalleryMarkup(array);
-
     //! Перевірка 1 ==> Показуємо чи ховаємо другу кнопку <Show more>
     const numberPages = Math.ceil(data.totalHits / newsApiService.perPage);
-    console.log('Кількість сторінок', numberPages);
-    console.log('newsApiService.page', newsApiService.page);
-
     if (newsApiService.page <= numberPages) {
       loadMoreBtn.show();
       loadMoreBtn.enable();
     }
+
+    Notify.info(`Hooray! We found ${data.totalHits} images.`);
 
     return markup;
   } catch (error) {

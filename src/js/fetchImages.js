@@ -15,10 +15,8 @@ export default class NewsApiService {
     const response = await axios.get(
       `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=${this.perPage}`
     );
-    console.log('response', response);
 
     const data = response.data;
-    console.log('response.data', response.data);
 
     if (response.status !== 200) {
       throw new Error(response.status);
