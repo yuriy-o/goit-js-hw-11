@@ -21,7 +21,8 @@ export function createGallery(galleryItems) {
           .split(' ');
 
         const withoutDuplicates = [...new Set(string)].join(' ');
-        const array = withoutDuplicates.split('');
+        // const array = withoutDuplicates.split(''); //! Два варіанта перевести строку в масив
+        const array = [...withoutDuplicates];
         const firstLetterInUpperCase = array.shift().toUpperCase();
         const withOutFirstLetter = array.slice(0, array.length).join('');
         const title = firstLetterInUpperCase + withOutFirstLetter;

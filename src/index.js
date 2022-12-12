@@ -65,7 +65,7 @@ async function onFormSubmit(e) {
       loadMoreBtn.enable();
     }
 
-    Notify.info(`Hooray! We found ${data.totalHits} images.`);
+    Notify.success(`Hooray! We found ${data.totalHits} images.`);
 
     return markup;
   } catch (error) {
@@ -87,6 +87,7 @@ async function onLoadMore() {
     if (newsApiService.page > numberPages) {
       loadMoreBtn.hide();
       loadMoreBtn.disable();
+      Notify.info("We're sorry, but you've reached the end of search results.");
     }
 
     const array = data.hits; //! ?? await //??
