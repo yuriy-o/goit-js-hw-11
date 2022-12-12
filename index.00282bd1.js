@@ -18,18 +18,18 @@ var xn={};n(xn,"popperGenerator",(function(){return si})),n(xn,"detectOverflow",
 //! функція onLoadMore() без async/await
 function Bl(t){const e=t.map((({webformatURL:t,largeImageURL:e,tags:n,likes:o,views:i,comments:r,downloads:s,pageURL:a})=>{
 //! Наступний код із URL робить тайтл для картинки
-const l=a.replace("https://pixabay.com/photos/","").slice(0,a.length-35).replaceAll("-"," ").trim().split(" "),c=[...new Set(l)].join(" ").split("");
+const l=a.replace("https://pixabay.com/photos/","").slice(0,a.length-35).replaceAll("-"," ").trim().split(" "),c=[...[...new Set(l)].join(" ")];
 //! End title
 return`\n    <div class="photo-card">\n      <div class="wrap">\n        <a class="gallery__item" href="${e}">\n          <img\n            class="gallery__image"\n            src="${t}"\n            alt="${n}"\n            title="${c.shift().toUpperCase()+c.slice(0,c.length).join("")}"\n            loading="lazy"\n          />\n        </a>\n      </div>\n      <div class="info">\n        <p class="info-item"><b>Likes</b> ${o}</p>\n        <p class="info-item"><b>Views</b> ${i}</p>\n        <p class="info-item"><b>Comments</b> ${r}</p>\n        <p class="info-item"><b>Downloads</b> ${s}</p>\n      </div>\n    </div>\n               `})).join("");wn.articlesContainer.insertAdjacentHTML("beforeend",e),_n.enable(),Hl.refresh()}Gi(Rl),Oi(Rl),wn.form.addEventListener("submit",(async function(t){if(t.preventDefault(),Cn.query=t.currentTarget.elements.searchQuery.value.trim(),""===Cn.query)return void bn.Notify.warning("The search query is empty. Please try again.");_n.disable(),Cn.resetPage(),wn.articlesContainer.innerHTML="";const e=await Cn.fetchImages();try{const t=Bl(e.hits);//! ?? await //??
 //! Перевіряє на вірність запросу. Якщо по запросу нема даних, то видає помилку
 if(0===Number(e.totalHits))return bn.Notify.failure("Sorry, there are no images matching your search query. Please try again."),void _n.hide();
 //! Перевірка 1 ==> Показуємо чи ховаємо другу кнопку <Show more>
-const n=Math.ceil(e.totalHits/Cn.perPage);return Cn.page<=n&&(_n.show(),_n.enable()),bn.Notify.info(`Hooray! We found ${e.totalHits} images.`),t}catch(t){return bn.Notify.failure("Sorry, there are no images matching your search query. Please try again."),t}}
+const n=Math.ceil(e.totalHits/Cn.perPage);return Cn.page<=n&&(_n.show(),_n.enable()),bn.Notify.success(`Hooray! We found ${e.totalHits} images.`),t}catch(t){return bn.Notify.failure("Sorry, there are no images matching your search query. Please try again."),t}}
 //! функція onLoadMore() з async/await
 )),_n.refs.button.addEventListener("click",(async function(){_n.disable();const t=await Cn.fetchImages();try{
 //! Перевірка 2 ==> Ховаємо чи показуємо другу кнопку <Show more>
-const e=Math.ceil(t.totalHits/Cn.perPage);Cn.page>e&&(_n.hide(),_n.disable());const n=t.hits;//! ?? await //??
+const e=Math.ceil(t.totalHits/Cn.perPage);Cn.page>e&&(_n.hide(),_n.disable(),bn.Notify.info("We're sorry, but you've reached the end of search results."));const n=t.hits;//! ?? await //??
 return Bl(n)}catch(t){return bn.Notify.failure("Sorry, there are no images matching your search query. Please try again."),t}}));
 //! Виклик та налаштування галереї
 const Hl=new(t(an))(".gallery a",{captionDelay:250,overlayOpacity:.8,closeText:"☣",scrollZoom:!1});
-//# sourceMappingURL=index.b1941627.js.map
+//# sourceMappingURL=index.00282bd1.js.map
