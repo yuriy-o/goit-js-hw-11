@@ -44,8 +44,8 @@ async function onFormSubmit(e) {
 
   clearArticlesContainer();
 
-  const data = await newsApiService.fetchImages();
   try {
+    const data = await newsApiService.fetchImages();
     const array = data.hits; //! ?? await //??
     const markup = onGalleryMarkup(array);
 
@@ -80,8 +80,9 @@ async function onFormSubmit(e) {
 async function onLoadMore() {
   loadMoreBtn.disable();
 
-  const data = await newsApiService.fetchImages();
   try {
+    const data = await newsApiService.fetchImages();
+
     //! Перевірка 2 ==> Ховаємо чи показуємо другу кнопку <Show more>
     const numberPages = Math.ceil(data.totalHits / newsApiService.perPage);
     if (newsApiService.page > numberPages) {
