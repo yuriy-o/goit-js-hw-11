@@ -6,14 +6,11 @@ import LoadMoreBtn from './js/components/load-more-btn';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import axios from 'axios';
-// import bootstrap from 'bootstrap';
 
 const refs = {
   form: document.querySelector('#search-form'),
   articlesContainer: document.querySelector('.gallery'),
   btnLoadMore: document.querySelector('.load-more'),
-  // loadMoreBtn: document.querySelector('[data-action="load-more"]'),
 };
 
 const loadMoreBtn = new LoadMoreBtn({
